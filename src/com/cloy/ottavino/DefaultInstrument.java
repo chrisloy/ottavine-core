@@ -1,7 +1,5 @@
 package com.cloy.ottavino;
 
-import java.util.Arrays;
-
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.Synthesizer;
 

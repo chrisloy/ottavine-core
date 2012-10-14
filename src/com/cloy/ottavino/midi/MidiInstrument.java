@@ -1,7 +1,9 @@
-package com.cloy.ottavino;
+package com.cloy.ottavino.midi;
 
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.Synthesizer;
+
+import com.cloy.ottavino.Instrument;
 
 public enum MidiInstrument implements Instrument {
 	

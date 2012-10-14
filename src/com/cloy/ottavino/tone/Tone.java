@@ -9,7 +9,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 
-public abstract class Tone {
+public abstract class Tone extends ToneInstrument {
 
 	private Clip clip;
 
@@ -21,19 +21,23 @@ public abstract class Tone {
 			clip = AudioSystem.getClip();
 		}
 	}
+	
+	@Override
+	public void stop() throws LineUnavailableException {
+		resetClip();
+	}
 
+	@Override
 	public void generateTone(float f) throws LineUnavailableException, IOException {
 		resetClip();
 		float sr = 44100;
-		float a = 64;
+		float a = 20;
 		
 		AudioFormat af = new AudioFormat(sr, 8, 1, true, false);
 		
 		int w = (int)(sr / f) + 1;
-		int x = 20;
+		int x = 200;
 		byte[] b = new byte[x * w];
-		
-		System.out.println(b.length);
 		
 		for(int j = 0; j < x; j++) {
 			int offs = j * w;

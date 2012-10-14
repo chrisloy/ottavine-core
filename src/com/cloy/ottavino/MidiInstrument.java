@@ -3,7 +3,8 @@ package com.cloy.ottavino;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.Synthesizer;
 
-public enum DefaultInstrument implements Instrument {
+public enum MidiInstrument implements Instrument {
+	
 	GrandPiano(0),
 	BrightPiano(1),
 	ElectricGrand(2),
@@ -196,18 +197,17 @@ public enum DefaultInstrument implements Instrument {
 	
 	private final int position;
 	
-	private DefaultInstrument(int position) {
+	private MidiInstrument(int position) {
 		this.position = position;
 	}
 	
-	public static DefaultInstrument getInstrument(int pos) {
-		for(DefaultInstrument i : values())
+	public static MidiInstrument getInstrument(int pos) {
+		for(MidiInstrument i : values())
 			if(i.position == pos)
 				return i;
 		throw new RuntimeException("Couldn't find instrument at position " + pos);
 	}
 	
-	@Override
 	public MidiChannel getMidiChannel(Synthesizer synth) {
 		return synth.getChannels()[position];
 	}
